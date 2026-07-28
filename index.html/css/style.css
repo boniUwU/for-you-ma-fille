@@ -279,7 +279,7 @@ rgba(150,200,255,.25);
 
     transition:
     opacity 4s ease,
-    transform 5s ease;
+    /*transform 5s ease;*/
 
 }
 
@@ -346,7 +346,7 @@ will-change:transform;
 
     filter:blur(35px);
 
-    opacity:0;
+    opacity:.45;
 
     transition:
     opacity 5s ease;
@@ -1511,7 +1511,7 @@ will-change:transform;
 
     text-align:center;
 
-    backdrop-filter:blur(18px);
+    background:rgba(18,30,55,.88);
 
     background:rgba(255,255,255,.08);
 
