@@ -344,7 +344,7 @@ will-change:transform;
 
     );
 
-    filter:blur(35px);
+    filter:blur(15px);/*35*/
 
     opacity:.45;
 
@@ -852,7 +852,7 @@ will-change:transform;
             rgba(255,255,255,0) 75%
         );
 
-    filter:blur(15px);
+    filter:blur(15px);/////
 
     animation-name: mistMove;
     animation-timing-function: linear;
@@ -1051,7 +1051,7 @@ will-change:transform;
 
     opacity:.45;
 
-    filter:blur(90px);
+    filter:blur(15px);/*90*/
 
     animation:auroraMove linear infinite;
 
@@ -1141,7 +1141,7 @@ will-change:transform;
 
         );
 
-    filter:blur(20px);
+    filter:blur(15px);/*20*/
 
     mix-blend-mode:screen;
 
