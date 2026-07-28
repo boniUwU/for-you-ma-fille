@@ -60,7 +60,7 @@ class Camera{
             const breathing =
                 Math.sin(this.time*0.3)*0.003;
 
-            document.body.style.transform =
+            //document.body.style.transform =
 
                 `translate(${this.offsetX}px,${this.offsetY}px)
                  scale(${this.scale+breathing})`;
