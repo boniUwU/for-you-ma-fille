@@ -1,0 +1,1717 @@
+/*=========================================================
+    BLUE TULIP GARDEN
+    Version: 1.0
+=========================================================*/
+
+/*==========================
+    GOOGLE FONT
+==========================*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/*==========================
+    VARIABLES
+==========================*/
+
+:root{
+
+    /* Sky */
+
+    --sky-top:#071425;
+    --sky-middle:#10274b;
+    --sky-bottom:#1b355e;
+
+    /* Moon */
+
+    --moon:#f5f7ff;
+    --moon-glow:#b7d8ff;
+
+    /* Stars */
+
+    --star:#ffffff;
+
+    /* Tulips */
+
+    --tulip-light:#7ec8ff;
+    --tulip-main:#3e88ff;
+    --tulip-dark:#194fca;
+
+    /* Leaves */
+
+    --leaf-light:#4caf50;
+    --leaf:#2f9e44;
+    --leaf-dark:#1f6b33;
+
+    /* Grass */
+
+    --grass-front:#17391d;
+    --grass-middle:#214b28;
+    --grass-back:#2e6d3a;
+
+    /* Message */
+
+    --message:#d9ecff;
+
+    /* Shadows */
+
+    --shadow:rgba(0,0,0,.35);
+    --moonIntensity:1;
+
+}
+
+/*==========================
+    RESET
+==========================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:"Poppins",sans-serif;
+
+    user-select:none;
+
+}
+
+/*==========================
+    BODY
+==========================*/
+
+body{
+
+    position:relative;
+
+    background:
+        radial-gradient(
+            circle at center,
+            var(--sky-middle) 0%,
+            var(--sky-top) 55%,
+            #010409 100%
+        );
+
+}
+
+/*==========================
+    SKY
+==========================*/
+
+#sky{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:1;
+
+}
+
+/*==========================
+    LAYERS
+==========================*/
+
+#backGrass,
+#flowersLayerBack,
+#flowersLayerMiddle,
+#flowersLayerFront,
+#sunflowerLayer,
+#frontGrass{
+
+    transition:transform .35s ease-out;
+    will-change:transform;
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+/*==========================
+    MESSAGE
+==========================*/
+
+#messageContainer{
+
+    position:absolute;
+
+    width:100%;
+
+    top:30%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+#message{
+
+    color:#dff2ff;
+
+    font-size:
+        clamp(28px,2vw,42px);
+
+    text-align:center;
+
+    max-width:700px;
+
+    width:80%;
+
+    text-align:center;
+
+    word-wrap:break-word;
+
+    line-height:1.5;
+
+    text-shadow:
+
+        0 0 12px #7bbdff,
+
+        0 0 35px rgba(90,170,255,.5);
+
+    transition:
+        opacity 1.5s;
+
+    opacity:0;
+
+}
+
+/*==========================
+    MUSIC BUTTON
+==========================*/
+
+#musicButton{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    z-index:9999;
+
+}
+
+#musicButton:hover{
+
+    transform:scale(1.1);
+
+    background:rgba(255,255,255,.15);
+
+}
+
+/*==========================
+    MOON
+==========================*/
+
+#moon{
+    
+
+    position:absolute;
+
+    width:140px;
+
+    height:140px;
+
+    right:10%;
+
+    top:8%;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at 35% 35%,
+    white,
+    #f7fbff 35%,
+    #d8e8ff 100%);
+
+    box-shadow:
+
+0 0 calc(50px * var(--moonIntensity))
+rgba(255,255,255,.9),
+
+0 0 calc(120px * var(--moonIntensity))
+rgba(150,200,255,.5),
+
+0 0 calc(220px * var(--moonIntensity))
+rgba(150,200,255,.25);
+
+    transition:transform .4s ease-out;
+    will-change:transform;
+
+    animation: moonBreathing 12s ease-in-out infinite;
+
+    opacity:0;
+
+    transition:
+    opacity 4s ease,
+    transform 5s ease;
+
+}
+
+@keyframes moonBreathing{
+
+    0%{
+
+        filter:brightness(1);
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        filter:brightness(1.18);
+
+        transform:scale(1.03);
+
+    }
+
+    100%{
+
+        filter:brightness(1);
+
+        transform:scale(1);
+
+    }
+
+}
+
+/*==========================
+    MOON GLOW
+==========================*/
+
+#moonGlow{
+
+    transition:transform .4s ease-out;
+will-change:transform;
+
+    animation: glowPulse 12s ease-in-out infinite;
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    right:3%;
+
+    top:-2%;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+
+        circle,
+
+        rgba(170,220,255,.22),
+
+        transparent 70%
+
+    );
+
+    filter:blur(35px);
+
+    opacity:0;
+
+    transition:
+    opacity 5s ease;
+
+}
+
+@keyframes glowPulse{
+
+    0%{
+
+        opacity:.45;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:.75;
+
+        transform:scale(1.15);
+
+    }
+
+    100%{
+
+        opacity:.45;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/*==============================
+    STARS
+==============================*/
+
+#stars{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.star{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 10px #b8dfff;
+
+    animation:twinkle infinite ease-in-out;
+
+}
+
+@keyframes twinkle{
+
+    0%{
+
+        opacity:.2;
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        opacity:1;
+        transform:scale(1.4);
+
+    }
+
+    100%{
+
+        opacity:.2;
+        transform:scale(.8);
+
+    }
+
+}
+
+.tulip{
+
+    position:absolute;
+    transform-origin:bottom center;
+    opacity:0;
+
+}
+
+#garden{
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:22vh;
+
+    z-index:10;
+
+}
+
+#backGrass{
+
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+}
+
+#flowersLayerBack{
+
+    position:absolute;
+    inset:0;
+    z-index:2;
+
+}
+
+#flowersLayerMiddle{
+
+    position:absolute;
+    inset:0;
+    z-index:3;
+
+}
+
+#flowersLayerFront{
+
+    position:absolute;
+    inset:0;
+    z-index:4;
+
+}
+
+#sunflowerLayer{
+
+    position:absolute;
+    inset:0;
+    z-index:5;
+
+}
+
+#frontGrass{
+
+    position:absolute;
+    inset:0;
+    z-index:6;
+
+}
+
+
+
+/* Suelo */
+
+#garden::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        to top,
+        #102215 0%,
+        #17351f 25%,
+        #214b28 60%,
+        transparent 100%
+    );
+
+}
+
+/* Césped delantero */
+
+#frontGrass{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+    height:120px;
+    left: 0;
+    z-index: 3;
+
+    background:
+    radial-gradient(circle at 20% 100%, #2b8a3e 0 18%, transparent 19%),
+    radial-gradient(circle at 40% 100%, #2f9e44 0 18%, transparent 19%),
+    radial-gradient(circle at 60% 100%, #37b24d 0 18%, transparent 19%),
+    radial-gradient(circle at 80% 100%, #2b8a3e 0 18%, transparent 19%);
+
+    background-size:60px 120px;
+
+}
+
+/*=====================================
+        METEORS
+=====================================*/
+
+.meteor{
+
+    position:absolute;
+
+    width:180px;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+
+        to left,
+
+        rgba(255,255,255,0),
+
+        rgba(170,220,255,.25),
+
+        rgba(210,240,255,.8),
+
+        white
+
+);
+
+    border-radius:999px;
+
+    transform:
+        rotate(-35deg);
+
+    box-shadow:
+
+        0 0 8px white,
+
+        0 0 18px #8bc8ff;
+
+    animation:
+        meteorFly linear forwards;
+
+    z-index:15;
+
+}
+
+.meteor-head{
+
+    position:absolute;
+
+    left:-4px;
+
+    top:50%;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    transform:translateY(-50%);
+
+    background:white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 22px #8ccfff,
+        0 0 35px #4f8fff;
+
+}
+
+@keyframes meteorFly{
+
+    from{
+
+        transform:
+            translate(0,0)
+            rotate(-35deg);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+            translate(-700px,450px)
+            rotate(-35deg);
+
+        opacity:0;
+
+    }
+
+}
+
+.sunflower{
+
+    position:absolute;
+
+    transform-origin:bottom center;
+
+}
+
+/*==================================
+    FIREFLIES
+==================================*/
+
+.firefly{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:#ffe66d;
+
+    box-shadow:
+        0 0 6px #fff3a0,
+        0 0 12px #ffd43b,
+        0 0 22px #ffe066;
+
+    animation:
+        fireflyBlink 2s ease-in-out infinite;
+
+}
+
+
+@keyframes fireflyBlink{
+
+    0%{
+
+        opacity:.2;
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    40%{
+
+        opacity:.3;
+
+    }
+
+    60%{
+
+        opacity:1;
+
+    }
+
+    80%{
+
+        opacity:.4;
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+    }
+
+}
+
+/*==================================
+    FLOATING PETALS
+==================================*/
+
+.floating-petal{
+
+    position:absolute;
+
+    width:14px;
+    height:18px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8fc3ff,
+            #4f8fff
+        );
+
+    border-radius:
+        60% 60% 60% 60% /
+        80% 80% 30% 30%;
+
+    box-shadow:
+        0 0 8px rgba(120,180,255,.45);
+
+    pointer-events:none;
+
+    animation:
+        petalFall linear forwards;
+
+    z-index:2;
+
+}
+
+@keyframes petalFall{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    25%{
+
+        transform:
+            translate(calc(var(--drift)*0.3),70px)
+            rotate(90deg);
+
+    }
+
+    50%{
+
+        transform:
+            translate(calc(var(--drift)*0.6),150px)
+            rotate(180deg);
+
+    }
+
+    75%{
+
+        transform:
+            translate(calc(var(--drift)*0.9),240px)
+            rotate(270deg);
+
+    }
+
+    100%{
+
+        transform:
+            translate(var(--drift),340px)
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+#petals{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:12;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+/*==================================
+        MIST
+==================================*/
+
+#mist{
+
+    transition:transform .4s ease-out;
+will-change:transform;
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:6;
+
+}
+
+.mist-cloud{
+
+    position:absolute;
+
+    width:500px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.35) 0%,
+            rgba(255,255,255,.18) 45%,
+            rgba(255,255,255,0) 75%
+        );
+
+    filter:blur(15px);
+
+    animation-name: mistMove;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    z-index:6;
+
+}
+
+
+@keyframes mistMove{
+
+    from{
+
+        transform:
+            translateX(-600px);
+
+    }
+
+    to{
+
+        transform:
+            translateX(calc(100vw + 700px));
+
+    }
+
+}
+
+/*==========================
+    SKY FLASH
+==========================*/
+
+#skyFlash{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(120,180,255,.18),
+            transparent 70%
+        );
+
+    opacity:0;
+
+    transition:opacity .45s;
+
+    z-index:2;
+
+}
+
+#skyFlash.active{
+
+    opacity:1;
+
+}
+
+.moon-light{
+
+    filter:
+        drop-shadow(0 0 6px rgba(180,220,255,.35))
+        drop-shadow(0 0 12px rgba(140,190,255,.20));
+
+    transition:filter .8s;
+
+}
+
+@keyframes petalBreath{
+
+    0%{
+
+        transform:scale(1) rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:
+            scale(1.03)
+            rotate(1deg);
+
+    }
+
+    100%{
+
+        transform:
+            scale(1)
+            rotate(0deg);
+
+    }
+
+}
+
+/*==================================
+        SHOOTING STAR FLASH
+==================================*/
+
+#sky.flash{
+
+    animation:
+        skyFlash .9s ease-out;
+
+}
+
+@keyframes skyFlash{
+
+    0%{
+
+        filter:
+            brightness(1);
+
+    }
+
+    20%{
+
+        filter:
+            brightness(1.18);
+
+    }
+
+    100%{
+
+        filter:
+            brightness(1);
+
+    }
+
+}
+
+.flashFlower{
+
+    filter:
+
+        brightness(1.25)
+
+        drop-shadow(
+            0 0 10px
+            rgba(180,220,255,.45)
+        );
+
+}
+
+/*==================================
+        AURORA
+==================================*/
+
+#aurora{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:2;
+
+}
+
+.aurora-beam{
+
+    position:absolute;
+
+    bottom:45%;
+
+    width:70px;
+
+    border-radius:100px;
+
+    filter:blur(28px);
+
+    transform-origin:bottom;
+
+    animation:auroraWave ease-in-out infinite;
+
+}
+
+.aurora-band{
+
+    transform:rotate(-8deg);
+
+    position:absolute;
+
+    width:180%;
+
+    height:320px;
+
+    left:-40%;
+
+    border-radius:50%;
+
+    opacity:.45;
+
+    filter:blur(90px);
+
+    animation:auroraMove linear infinite;
+
+}
+
+@keyframes auroraWave{
+
+    0%{
+
+        transform:
+            rotate(-8deg)
+            scaleY(.85);
+
+    }
+
+    25%{
+
+        transform:
+            rotate(-2deg)
+            scaleY(1.15);
+
+    }
+
+    50%{
+
+        transform:
+            rotate(8deg)
+            scaleY(.9);
+
+    }
+
+    75%{
+
+        transform:
+            rotate(2deg)
+            scaleY(1.2);
+
+    }
+
+    100%{
+
+        transform:
+            rotate(-8deg)
+            scaleY(.85);
+
+    }
+
+}
+
+/*==================================
+        MOON LIGHT
+==================================*/
+
+#moonLight{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:4;
+
+    overflow:hidden;
+
+}
+
+.moon-ray{
+
+    position:absolute;
+
+    top:-10%;
+
+    transform-origin:top center;
+
+    background:
+
+        linear-gradient(
+
+            to bottom,
+
+            rgba(230,245,255,.22),
+
+            rgba(180,220,255,.10),
+
+            transparent 85%
+
+        );
+
+    filter:blur(20px);
+
+    mix-blend-mode:screen;
+
+    animation:
+
+        moonRayFloat linear infinite;
+
+}
+
+@keyframes moonRayFloat{
+
+    0%{
+
+        transform:
+            translateY(0)
+            rotate(var(--rotation,0deg))
+            scaleY(.95);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(15px)
+            rotate(calc(var(--rotation,0deg) + 2deg))
+            scaleY(1.05);
+
+    }
+
+    100%{
+
+        transform:
+            translateY(0)
+            rotate(var(--rotation,0deg))
+            scaleY(.95);
+
+    }
+
+}
+
+
+
+/*==================================
+        FLOWER BREATHING
+==================================*/
+
+.tulip{
+
+    animation:
+        tulipBreathing
+        6s
+        ease-in-out
+        infinite;
+
+}
+
+@keyframes tulipBreathing{
+
+    0%{
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        filter:brightness(1.05);
+
+    }
+
+    100%{
+
+        filter:brightness(1);
+
+    }
+
+}
+
+.petal{
+
+    transform-origin:bottom center;
+
+    animation:
+        petalBreath
+        5s
+        ease-in-out
+        infinite;
+
+    animation-delay:var(--delay);
+
+}
+
+@keyframes petalBreath{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            scale(1.03)
+            translateY(-1px);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*==================================
+      MESSAGE FLASH
+==================================*/
+
+#messageFlash{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(170,210,255,.18),
+        transparent 70%
+    );
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .8s;
+
+    z-index:5;
+
+}
+
+/*==================================
+      SKY PETALS
+==================================*/
+
+.petalParticle{
+
+    position:absolute;
+
+    width:16px;
+
+    height:10px;
+
+    background:linear-gradient(
+        135deg,
+        #7db8ff,
+        #4b7cff
+    );
+
+    border-radius:100% 100% 100% 0;
+
+    filter:drop-shadow(
+        0 0 4px rgba(150,200,255,.35)
+    );
+
+    pointer-events:none;
+
+}
+
+/*==================================
+      LEGENDARY METEOR
+==================================*/
+
+.legendary-meteor{
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 10px #ffffff,
+        0 0 25px #9fdcff,
+        0 0 50px #7ec8ff;
+
+    animation:
+        legendaryMeteorMove 2.8s linear forwards;
+
+    z-index:20;
+
+}
+
+.legendary-meteor::before{
+
+    content:"";
+
+    position:absolute;
+
+    right:100%;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:260px;
+
+    height:3px;
+
+    background:linear-gradient(
+        to left,
+        rgba(255,255,255,.9),
+        rgba(170,220,255,.45),
+        transparent
+    );
+
+    filter:blur(2px);
+
+}
+
+@keyframes legendaryMeteorMove{
+
+    from{
+
+        transform:
+            translate(-200px,-150px)
+            rotate(35deg);
+
+    }
+
+    to{
+
+        transform:
+            translate(calc(100vw + 400px),700px)
+            rotate(35deg);
+
+    }
+
+}
+
+/*==================================
+      METEOR SPARKS
+==================================*/
+
+.meteor-spark{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#bde8ff;
+
+    box-shadow:
+        0 0 6px white,
+        0 0 12px #8fd6ff;
+
+    animation:
+        meteorSpark .9s ease-out forwards;
+
+    pointer-events:none;
+
+    z-index:19;
+
+}
+
+@keyframes meteorSpark{
+
+    from{
+
+        opacity:1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:
+            translate(var(--dx),var(--dy))
+            scale(0);
+
+    }
+
+}
+
+/*==================================
+      FINAL GLOW
+==================================*/
+
+#finalGlow{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(140,200,255,.18),
+            transparent 70%
+        );
+
+    opacity:0;
+
+    transition:
+        opacity 2s ease;
+
+    z-index:999;
+
+}
+
+/*===============================
+        INTRO
+================================*/
+
+#intro{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    radial-gradient(circle,#071425,#000);
+
+    z-index:5000;
+
+    transition:opacity 1.8s;
+
+}
+
+#intro.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+#introCard{
+
+    width:min(90%,420px);
+
+    padding:40px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 40px rgba(120,180,255,.12);
+
+}
+
+#intro h1{
+
+    color:white;
+
+    margin-top:20px;
+
+}
+
+#intro p{
+
+    color:#dbe9ff;
+
+    line-height:1.7;
+
+}
+
+#startButton{
+
+    margin-top:30px;
+
+    padding:15px 32px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#4d86ff;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.35s;
+
+}
+
+#startButton:hover{
+
+    transform:scale(1.05);
+
+    background:#6da5ff;
+
+}
+
+.moonIcon{
+
+    font-size:60px;
+
+    animation:
+        floatMoon 4s ease-in-out infinite;
+
+}
+
+@keyframes floatMoon{
+
+    50%{
+
+        transform:
+            translateY(-10px);
+
+    }
+
+}
+
+/*==================================
+        RESPONSIVE
+==================================*/
+
+/* Tablets */
+
+@media (max-width: 1024px){
+
+    #moon{
+
+        width:140px;
+        height:140px;
+
+        top:50px;
+        right:50px;
+
+    }
+
+    #message{
+
+        font-size:26px;
+
+        max-width:85%;
+
+    }
+
+    .tulip{
+
+        transform-origin:
+            center bottom;
+
+    }
+
+}
+
+/* Teléfonos */
+
+@media (max-width:768px){
+
+    #moon{
+
+        width:110px;
+        height:110px;
+
+        top:25px;
+        right:25px;
+
+    }
+
+    #message{
+
+        width:90%;
+
+        font-size:20px;
+
+        line-height:1.5;
+
+        padding:18px;
+
+    }
+
+    #introCard{
+
+        width:90%;
+
+        padding:28px;
+
+    }
+
+    #intro h1{
+
+        font-size:28px;
+
+    }
+
+    #intro p{
+
+        font-size:16px;
+
+    }
+
+    #startButton{
+
+        width:100%;
+
+        font-size:18px;
+
+    }
+
+    .tulip{
+
+        transform-origin:
+            center bottom;
+
+    }
+
+}
+
+/* Teléfonos pequeños */
+
+@media (max-width:480px){
+
+    #moon{
+
+        width:90px;
+        height:90px;
+
+    }
+
+    #message{
+
+        font-size:17px;
+
+        padding:15px;
+
+    }
+
+    #musicButton{
+
+        width:48px;
+        height:48px;
+
+        font-size:18px;
+
+    }
+
+}
