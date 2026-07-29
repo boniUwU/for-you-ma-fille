@@ -1,5 +1,9 @@
 const sky = new Sky();
-sky.createStars(350);
+
+const isMobile =
+    window.matchMedia("(max-width: 768px)").matches;
+
+sky.createStars(isMobile ? 90 : 350);
 
 const garden = new Garden();
 
@@ -216,10 +220,6 @@ moon.animate(
 }, { once: true });
 
     const camera = new Camera();
-
-    const music =
-    new Music();
-    window.music = music;
 
     window.addEventListener("finalMoment",()=>{
 
