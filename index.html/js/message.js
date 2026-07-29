@@ -13,6 +13,12 @@ class Message {
 
             "Incluso las estrellas parecen más brillantes cuando sonríes.",
 
+            "mis sueños se vuelven idílicos cuando apareces tú.",
+
+            "Probablemente ya no sientas nada hacia mí.",
+
+            "Pero eso no cambia lo que siento yo hacia a ti... Cara Mía..💙💙💙💙💙💙💙",
+
             "Gracias por existir.",
 
             "Aun te amo. 💙"
