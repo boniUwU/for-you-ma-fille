@@ -2,8 +2,6 @@ class Camera{
 
     constructor(){
 
-        document.body.style.willChange = "transform";//gemini
-
         this.scale = 1;
         this.targetScale = 1;
 
