@@ -1,9 +1,17 @@
 const sky = new Sky();
 
+const isAndroid =
+    /Android/i.test(navigator.userAgent);
+
+if (isAndroid) {
+    document.documentElement.classList.add("android");
+}
+
 const isMobile =
     window.matchMedia("(max-width: 768px)").matches;
 
 sky.createStars(isMobile ? 90 : 350);
+sky.createStars(isAndroid ? 70 : 350);
 
 const garden = new Garden();
 
@@ -11,7 +19,8 @@ const flowers = new FlowerEngine(garden);
 
 const sunflowers = new SunflowerEngine(garden);
 
-const wind=new Wind();
+const wind =
+    isAndroid ? null : new Wind();
 
 const backPositions = [
     8,18,28,38,48,58,68,78,88
@@ -39,7 +48,9 @@ backPositions.forEach(x=>{
 
     garden.addFlower(flower,"back");
 
+    if (wind) {
     wind.add(flower);
+}
 
 });
 
@@ -57,7 +68,9 @@ middlePositions.forEach(x=>{
 
     garden.addFlower(flower,"middle");
 
+   if (wind) {
     wind.add(flower);
+}
 
 });
 
@@ -75,7 +88,9 @@ frontPositions.forEach(x=>{
 
     garden.addFlower(flower,"front");
 
+    if (wind) {
     wind.add(flower);
+}
 
 });
 
@@ -104,7 +119,9 @@ sunflowerPositions.forEach(x=>{
         "back"
     );
 
+    if (wind) {
     wind.add(sunflower);
+}
 
 });
 
@@ -129,53 +146,16 @@ window.addEventListener("gardenStart",()=>{
     const moon =
     document.getElementById("moon");
 
-const glow =
+    const glow =
     document.getElementById("moonGlow");
 
-setTimeout(()=>{
+    setTimeout(()=>{
 
-    moon.style.opacity = 1;
+        moon.style.opacity = 1;
 
-    glow.style.opacity = .9;
+        glow.style.opacity = .9;
 
-},1200);
-
-
-const isMobileMoon =
-    window.matchMedia("(max-width: 768px)").matches;
-
-if (!isMobileMoon) {
-moon.animate(
-
-[
-    {
-
-        transform:
-            "scale(.85)"
-
-    },
-
-    {
-
-        transform:
-            "scale(1)"
-
-    }
-
-],
-
-{
-
-    duration:5000,
-
-    fill:"forwards",
-
-    easing:"ease-out"
-
-}
-
-);
-}
+    },1200);
 
     new MeteorShower(
         document.getElementById("sky")
@@ -185,13 +165,17 @@ moon.animate(
         document.getElementById("fireflies")
     );
 
-    new Mist(
-        document.getElementById("mist")
-    );
+    if (!isAndroid) {
 
-    new Aurora(
-        document.getElementById("aurora")
-    );
+        new Mist(
+            document.getElementById("mist")
+        );
+
+        new Aurora(
+            document.getElementById("aurora")
+        );
+
+    }
 
 });
 
@@ -201,11 +185,15 @@ moon.animate(
 
     window.addEventListener("gardenStart",()=>{
 
-    new Environment();
+    if (!isAndroid) {
 
-    //new Parallax();
+        new Environment();
 
-    new MoonLight();
+        new Parallax();
+
+        new MoonLight();
+
+    }
 
     new Message();
 
@@ -225,7 +213,8 @@ moon.animate(
 
 }, { once: true });
 
-    const camera = new Camera();
+    const camera =
+    isAndroid ? null : new Camera();
 
     window.addEventListener("finalMoment",()=>{
 
