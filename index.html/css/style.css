@@ -1757,3 +1757,43 @@ will-change:transform;
         animation: none;
     }
 }
+
+@media (max-width: 768px) {
+
+    .tulip {
+        animation: none !important;
+        filter: none !important;
+        transform-origin: center bottom;
+    }
+
+    .tulip .petal {
+        animation: none !important;
+        filter: none !important;
+    }
+
+    #moon {
+        animation: none !important;
+        filter: none !important;
+        opacity: 1;
+        transform: none !important;
+    }
+
+    #moonGlow {
+        animation: none !important;
+        opacity: .55;
+    }
+
+    #messageContainer {
+        position: fixed;
+        top: 24%;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        pointer-events: none;
+    }
+
+    #message {
+        opacity: 0;
+        filter: none;
+    }
+}
