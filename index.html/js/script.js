@@ -203,7 +203,7 @@ moon.animate(
 
     new Environment();
 
-    new Parallax();
+    //new Parallax();
 
     new MoonLight();
 
