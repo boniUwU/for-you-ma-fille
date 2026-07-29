@@ -104,6 +104,9 @@ body{
 ==========================*/
 
 #sky{
+    will-change: transform;
+
+transform-origin: center center;
 
     position:absolute;
 
@@ -442,6 +445,9 @@ will-change:transform;
 }
 
 #garden{
+    will-change: transform;
+
+transform-origin: center bottom;
 
     position:absolute;
 
