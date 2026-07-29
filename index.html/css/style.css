@@ -11,7 +11,14 @@
 /*==========================
     VARIABLES
 ==========================*/
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Fuerza el uso de la GPU sin fallos de renderizado */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
 :root{
 
     /* Sky */
@@ -75,6 +82,8 @@ body{
     height:100%;
 
     overflow:hidden;
+    position: fixed; /* Evita tirones de pantalla en navegadores móviles */
+    touch-action: none; /*gemini*/
 
     font-family:"Poppins",sans-serif;
 
