@@ -365,40 +365,29 @@ stem.setAttribute(
 
 ];
 
-petals.forEach(p => {
+const isMobile =
+    window.matchMedia("(max-width: 768px)").matches;
 
-    p.animate(
+if (!isMobile) {
 
-        [
-
+    petals.forEach(p => {
+//edit
+        p.animate(
+            [
+                { filter: "brightness(1)" },
+                { filter: "brightness(1.12)" },
+                { filter: "brightness(1)" }
+            ],
             {
-                filter: "brightness(1)"
-            },
-
-            {
-                filter: "brightness(1.12)"
-            },
-
-            {
-                filter: "brightness(1)"
+                duration: 2500 + Math.random() * 3000,
+                iterations: Infinity,
+                easing: "ease-in-out"
             }
+        );
 
-        ],
+    });
 
-        {
-
-            duration:
-                2500 + Math.random()*3000,
-
-            iterations: Infinity,
-
-            easing: "ease-in-out"
-
-        }
-
-    );
-
-});
+}//edit
 
                 // Brillo
         const shine = document.createElementNS(svgNS, "ellipse");
