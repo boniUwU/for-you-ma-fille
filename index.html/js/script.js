@@ -140,6 +140,11 @@ setTimeout(()=>{
 
 },1200);
 
+
+const isMobileMoon =
+    window.matchMedia("(max-width: 768px)").matches;
+
+if (!isMobileMoon) {
 moon.animate(
 
 [
@@ -170,6 +175,7 @@ moon.animate(
 }
 
 );
+}
 
     new MeteorShower(
         document.getElementById("sky")
