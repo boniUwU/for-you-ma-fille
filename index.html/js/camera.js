@@ -51,11 +51,17 @@ class Camera{
             this.scale +=
                 (this.targetScale-this.scale)*0.02;
 
-            this.offsetX =
+          /*  this.offsetX =
                 Math.sin(this.time*0.4)*3;
 
             this.offsetY =
-                Math.cos(this.time*0.25)*2;
+                Math.cos(this.time*0.25)*2;*/ //cambio
+
+            this.offsetX =
+    Math.sin(this.time*0.4)*1.2;
+
+this.offsetY =
+    Math.cos(this.time*0.25)*0.8;
 
             const breathing =
                 Math.sin(this.time*0.3)*0.003;
