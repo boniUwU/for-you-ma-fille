@@ -178,15 +178,20 @@ const angle =
 
         this.windStrength;
 
-        const scale = f.scale * f.growth;
 
         const breathing =
     1 + Math.sin(this.time * 0.8 + f.offset) * 0.01;
 
-f.element.style.transform =
-    `rotate(${angle}deg) scale(${f.scale * breathing})`;
+const visibleScale =
+    f.scale * f.growth * breathing;
 
-        f.element.style.opacity = f.growth;
+f.element.style.transform =
+    `translateX(-50%)
+     rotate(${angle}deg)
+     scale(${visibleScale})`;
+
+f.element.style.opacity =
+    Math.min(f.growth, 1);
 
         if(
 
