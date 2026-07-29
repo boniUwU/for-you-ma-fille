@@ -240,49 +240,36 @@ transform-origin: center center;
     MOON
 ==========================*/
 
-#moon{
-    
-
+#moon {
     position:absolute;
-
     width:140px;
-
     height:140px;
-
     right:10%;
-
     top:8%;
-
     border-radius:50%;
 
     background:
-    radial-gradient(circle at 35% 35%,
-    white,
-    #f7fbff 35%,
-    #d8e8ff 100%);
+        radial-gradient(
+            circle at 35% 35%,
+            white,
+            #f7fbff 35%,
+            #d8e8ff 100%
+        );
 
     box-shadow:
+        0 0 calc(50px * var(--moonIntensity))
+        rgba(255,255,255,.9),
 
-0 0 calc(50px * var(--moonIntensity))
-rgba(255,255,255,.9),
+        0 0 calc(120px * var(--moonIntensity))
+        rgba(150,200,255,.5),
 
-0 0 calc(120px * var(--moonIntensity))
-rgba(150,200,255,.5),
+        0 0 calc(220px * var(--moonIntensity))
+        rgba(150,200,255,.25);
 
-0 0 calc(220px * var(--moonIntensity))
-rgba(150,200,255,.25);
-
-    transition:transform .4s ease-out;
     will-change:transform;
-
-    animation: moonBreathing 12s ease-in-out infinite;
-
+    animation:moonBreathing 12s ease-in-out infinite;
     opacity:0;
-
-    transition:
-    opacity 4s ease,
-    /*transform 5s ease;*/
-
+    transition:opacity 4s ease;
 }
 
 @keyframes moonBreathing{
@@ -1719,4 +1706,54 @@ will-change:transform;
 
     }
 
+}
+
+@media (max-width: 768px) {
+/*recien agregado para prueba*/
+    #sky,
+    #garden {
+        will-change: auto;
+        transform: none;
+    }
+
+    #moonGlow {
+        filter: blur(8px);
+    }
+
+    .mist-cloud {
+        filter: blur(6px);
+        opacity: .45;
+    }
+
+    .aurora-beam {
+        filter: blur(10px);
+    }
+
+    .aurora-band {
+        filter: blur(10px);
+    }
+
+    .moon-ray {
+        filter: blur(7px);
+        mix-blend-mode: normal;
+        opacity: .45;
+    }
+
+    #musicButton {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(20, 35, 65, .92);
+    }
+
+    .tulip {
+        animation: none;
+    }
+
+    .petal {
+        animation: none;
+    }
+
+    #sky.flash {
+        animation: none;
+    }
 }
