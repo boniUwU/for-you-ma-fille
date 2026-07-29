@@ -60,10 +60,20 @@ class Camera{
             const breathing =
                 Math.sin(this.time*0.3)*0.003;
 
-            /*document.body.style.transform =*/
+            const garden =
+    document.getElementById("garden");//cambio
 
-                `translate(${this.offsetX}px,${this.offsetY}px)
-                 scale(${this.scale+breathing})`;
+const sky =
+    document.getElementById("sky");
+
+const transform =
+
+    `translate(${this.offsetX}px,${this.offsetY}px)
+     scale(${this.scale+breathing})`;
+
+garden.style.transform = transform;
+
+sky.style.transform = transform;//cambio
 
         }
 
