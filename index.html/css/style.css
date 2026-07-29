@@ -1797,3 +1797,16 @@ will-change:transform;
         filter: none;
     }
 }
+
+/* Mostrar flores cuando el viento está desactivado en Android */
+
+.android .tulip {
+    opacity: 1 !important;
+
+    transform:
+        translateX(-50%)
+        rotate(var(--rotation, 0deg))
+        scale(var(--scale, 1)) !important;
+
+    transform-origin: center bottom;
+}
